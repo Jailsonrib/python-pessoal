@@ -1,16 +1,18 @@
+import datetime as dt
 class User:
-    def __init__(self, name, last_name, age):
+    def __init__(self, name, last_name, birth_year):
         self.name = name
         self.last_name = last_name
-        self.age = age
+        self.birth_year = birth_year
     def great_user(self):
-        full_name = f" Name: {self.name} last_name: {self.last_name} age: {self.age}".title()
+        self.birth_year = dt.datetime.now().year - self.birth_year
+        full_name = f" Name: {self.name} last_name: {self.last_name} age: {self.birth_year}".title()
         print(full_name)
 class Admin(User):
 
-    def __init__(self, name, last_name, age):
+    def __init__(self, name, last_name, birth_year):
 
-        super().__init__(name, last_name, age)
+        super().__init__(name, last_name, birth_year)
         self.privilege = []
 
     def great_admin(self):
@@ -26,8 +28,8 @@ class Admin(User):
 
 
 
-user1 = Admin("jailson",'Ribeiro', 31)
+user1 = Admin('jailson','Ribeiro', 1997)
 user1.great_user()
 user1.great_admin()
-user1.privilege =['pode editar','pode deletar']
+user1.privilege =['pode editar','pode deletar','pode mijar no chão do escritório a vontade']
 user1.show_privileges()
